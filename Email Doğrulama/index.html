@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Email Doğrulama</title>
+</head>
+
+<body>
+    <div class="row mb-5 text-center">
+        <div class="col-12 bg-dark">
+            <a href="index.html" style="color: white; font-size: 25px;">MENÜYE GERİ DÖN</a>
+        </div>
+    </div>
+    <div class="container">
+        <form action="">
+            <h6>E MAİL GİRİNİZ</h6>
+            <input type="text" name="" id="email" class="form-control">
+            <button type="button" id="gonder" class="form-control btn btn-primary mt-4">GÖNDER</button>
+        </form>
+    </div>
+    <script>
+        const email = document.getElementById("email");
+        email.addEventListener("keyup", kontrol);
+        const gonder = document.getElementById("gonder");
+        gonder.disabled = true;
+        const email_regex = /\w+@\w{2,}\.\w+/g;
+        function kontrol() {
+            if (email_regex.test(email.value)) {
+                gonder.disabled = false;
+            }
+            else {
+                gonder.disabled = true;
+            }
+        }
+        gonder.addEventListener("click", kaydet);
+        function kaydet() {
+            localStorage.setItem("emails", email.value);
+        }
+    </script>
+</body>
+
+</html>
